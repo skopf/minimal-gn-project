@@ -18,25 +18,23 @@ You need to install Chromium's  [`depot_tools`](http://www.chromium.org/develope
 
 ### Getting the code
 
-Create a `.gclient` file in an empty directory with this contents:
+Run these commands in an empty directory:
+
 ```
-solutions = [{
-  'managed': False,
-  'name': 'src',
-  'url': 'git@github.com:abarth/tau.git',
-  'deps_file': 'DEPS',
-}]
+gclient config --unmanaged https://github.com/skopf/minimal-gn-project.git
+gclient sync
 ```
 
-In this directory, run `gclient sync`. This will pull this project and all its dependancies.
+The first command will create a `.glient` file pointing to this project. The second command will pull this project and
+all its dependancies.
 
 
 ### Directory structure of minimal GN project
 
-Once gclient finished, you will find a `src` directory next to your `.client` file with this structure: 
+Once gclient finished, you will find a `minimal-gn-project` directory next to your `.client` file with this structure: 
 
 ```
- src (needs to be under GIT management)
+ minimal-gn-project (needs to be under GIT management)
   |
   +-- [build] --> https://chromium.googlesource.com/chromium/src/build.git@xxxx
   |
@@ -44,7 +42,7 @@ Once gclient finished, you will find a `src` directory next to your `.client` fi
   |
   +-- tools
   |    |
-  |    `-- [gyp] --> https://chromium.googlesource.com/external/gyp.git@c61b0b35c8396bfd59efc6cfc11401d912b0f510
+  |    `-- [gyp] --> https://chromium.googlesource.com/external/gyp.git@xxx
   |
   +-- build_overrides
   |    |
@@ -81,19 +79,21 @@ project in a plain vanilla folder.
 
 This setup pulls many parts from the Chromium build. The project specific custom parts have the following content and meaning:
 
-| File | Content |
-|------+---------|
-| build_overrides/build.gni | (yet unknown) |
-| app/*.cc,*.h | Source files of application |
-| app/BUILD.gn | GN project file defining this application |
-| .gn | pointing to the buildconfig and secondary_source |
-| BUILD.gn | top-level umbrella project pulling all sub-projects together |
-| DEPS | (optional) declares dependencies so that this project can be managed by gclient |
+File | Content
+-----|--------
+build_overrides/build.gni | Multiple defines of variables required by the Chromium build process
+app/hello_world.cc | Source file of the main application
+app/BUILD.gn | GN project file for the main application
+lib/say_hello.\* | Source files of the static library
+lib/BUILD.gn | GN project file for the static library
+.gn | pointing to the buildconfig and secondary_source
+BUILD.gn | top-level umbrella project pulling all sub-projects together
+DEPS | (optional) declares dependencies so that this project can be managed by gclient
 
 
 ### Build the project
 
-In the `src` directory, run this command:
+In the `minimal-gn-project` directory, run this command:
 
 `gn gen out`
 
@@ -101,7 +101,8 @@ This will create a Ninja build files in the new directoty `out`. Next, we run `n
 
 `ninja -C out`
 
-The `hello_world` executable has now been created in `out`. You can replace the name `out` with any name of your liking.
+The `hello_world` executable has now been created in `out`. You can replace the name `out` with any name of your liking,
+or even use multiple different directories for different build configurations.
 
 
 ### IDE integration
@@ -111,4 +112,4 @@ for different IDEs that then invoke GN and Ninja to build the project. For examp
 
 `gn gen --ide=vs2015 out`
 
-
+This will give you a Visual Studio 2015 Solution file: `out/all.sln`

@@ -1,11 +1,11 @@
 ## Minimal GN project
 
 [GN](https://chromium.googlesource.com/chromium/src/tools/gn/+/HEAD/README.md) is a meta-build-system invented by
-the Chromium authors to build Chromium on multiple platform. It generates [NinjaBuild](https://ninja-build.org/)
-files which are then used to build the actual product.
+the Chromium authors to build Chromium on multiple platforms. It generates [NinjaBuild](https://ninja-build.org/)
+files which are then used to build the actual product. (GN == Generate Ninja)
 
-It is a great build system, but heavily tied to Chromium. Only very few projects use it outside of Chromium and
-there is just very little documentation how to use it.
+It is a great build system, but heavily tied to Chromium. Only very few projects use it outside of Chromium, and
+there is very little documentation how to use it.
 
 This project is a minimalistic `Hello, World!` cross platform GN build. It is ment to help others to learn more
 about GN and serve as a boilerplate for your own projects.
@@ -13,7 +13,7 @@ about GN and serve as a boilerplate for your own projects.
 
 ### Precenditions
 
-You need to install Chromium's  [`depot_tools`](http://www.chromium.org/developers/how-tos/install-depot-tools).
+You need to install Chromium's [`depot_tools`](http://www.chromium.org/developers/how-tos/install-depot-tools).
 
 
 ### Getting the code
@@ -31,7 +31,7 @@ all its dependancies.
 
 ### Directory structure of minimal GN project
 
-Once gclient finished, you will find a `minimal-gn-project` directory next to your `.client` file with this structure: 
+Once `gclient  sync` finished, you will have a `minimal-gn-project` directory with this structure: 
 
 ```
  minimal-gn-project (needs to be under GIT management)

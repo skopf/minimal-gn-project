@@ -62,7 +62,7 @@ Once `gclient  sync` finished, you will have a `minimal-gn-project` directory wi
   |    |
   |    +-- hello_world.cc
   |    |
-  |    `-- BUILD.GN (defining the 'hello_world' executable)
+  |    `-- BUILD.GN  (defining the 'hello_world' executable)
   |
   +-- .gn  (pointing to BUILDCONFIG in //build directory)
   |

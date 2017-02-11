@@ -1,0 +1,12 @@
+
+executable("hello_world") {
+  sources = [
+    "hello_world.cc",
+  ]
+  deps = [
+    "../lib:say_hello",
+  ]
+  include_dirs = [
+    "//lib"
+  ]
+}

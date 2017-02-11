@@ -1,0 +1,7 @@
+
+static_library("say_hello") {
+  sources = [
+    "say_hello.cc",
+    "say_hello.h",
+  ]
+}

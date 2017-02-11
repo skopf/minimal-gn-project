@@ -1,0 +1,7 @@
+
+group("minimal-gn-project") {
+  deps = [
+    "//lib:say_hello",
+    "//app:hello_world",
+  ]
+}

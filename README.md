@@ -11,7 +11,7 @@ This project is a minimalistic `Hello, World!` cross platform GN build. It is me
 about GN and serve as a boilerplate for your own projects.
 
 
-### Precenditions
+### Prerequisites
 
 You need to install Chromium's [`depot_tools`](http://www.chromium.org/developers/how-tos/install-depot-tools).
 
